@@ -7,8 +7,8 @@
   "maintainer": "Yichao Deng",
   "cite": "https://github.com/vistalab/docker/tree/flywheel/utils/pbrtv3/flywheel",
   "license": "Apache-2.0",
-  "url": "",
-  "source": "",
+  "url": "https://github.com/dyc1998108/UploadGear",
+  "source": "https://github.com/dyc1998108/UploadGear",
   "environment": {
     "FLYWHEEL": "/flywheel/v0"
   },
