@@ -21,9 +21,6 @@ self = fw.get_current_user()
 # 2.create a temporary directory to place the files in the zipfile.
 message_file = context.get_input_path('files')
 print(message_file, type(message_file))
-os.mkdir("temp/")
-zf = zipfile.ZipFile(message_file)
-zf.extractall("temp/")
 
 # 3. (original version) UPLOAD all INPUT files that are .dat or .txt
 # However, this method will only deal with the files in the fist layer.
@@ -41,9 +38,6 @@ def listall(root, path):
     for item in items:
         all.extend(listall(item, os.path.join(path,root)))
     return all
-
-
-upload_files = listall("temp/", '')
 
 # 4. check the accuracy of the input(the existence of subject, session and acquisition)
 try:
@@ -76,11 +70,11 @@ for i in acquisitions:
         target_acqusition = i
 assert target_acqusition != None, "No acquisition exist."
 
+
+
+
 # 5. Upload files. After uploading is done, remove the temporary directory.
 print('Uploading files...')
-for f in upload_files:
-    print('\t%s...' % (f))
-    target_acqusition.upload_file(f)
+print('\t%s...' % (message_file))
+target_acqusition.upload_file(message_file)
 print('Done!')
-
-shutil.rmtree("temp/")
